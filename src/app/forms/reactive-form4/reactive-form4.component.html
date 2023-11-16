@@ -14,14 +14,6 @@
       Dentro del <b>formGroupName</b> hacemos referencia directa a la propiedad
       con el <b>formControlName</b>
     </li>
-    <li>
-      Hacemos uso del método <b>patchValue</b> del formGroup para actualizar
-      valores del formulario
-    </li>
-    <li>
-      Hacemos uso del método <b>reset</b> del formGroup para limpiar el
-      formulario
-    </li>
   </ul>
 </div>
 <div>
@@ -40,15 +32,6 @@
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input matInput placeholder="Ingresa email" formControlName="email" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Edad (Min 18)</mat-label>
-          <input
-            type="number"
-            matInput
-            placeholder="Ingresa edad"
-            formControlName="age"
-          />
         </mat-form-field>
       </div>
       <div class="margin-b-10">
@@ -96,6 +79,7 @@
               type="number"
               matInput
               placeholder="Ingresa el código postal"
+              name="studentForm.address.zip"
               formControlName="zip"
             />
           </mat-form-field>
@@ -119,26 +103,6 @@
         [disabled]="!studentForm.valid"
       >
         Enviar
-      </button>
-    </div>
-    <div class="margin-b-10">
-      <button
-        type="button"
-        mat-raised-button
-        color="primary"
-        (click)="fillRequiredFields()"
-      >
-        Rellenar datos requeridos
-      </button>
-    </div>
-    <div class="margin-b-10">
-      <button
-        type="button"
-        mat-raised-button
-        color="primary"
-        (click)="resetStudentForm()"
-      >
-        Reiniciar formulario
       </button>
     </div>
     <div class="example-form">

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -9,12 +9,12 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-reactive-form3',
+  selector: 'app-reactive-form4',
   standalone: true,
   imports: [
     CommonModule,
@@ -25,9 +25,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDividerModule,
     MatCheckboxModule,
   ],
-  templateUrl: './reactive-form3.component.html',
+  templateUrl: './reactive-form4.component.html',
 })
-export class ReactiveForm3Component {
+export class ReactiveForm4Component {
+  private formBuilder = inject(FormBuilder);
+
   private addressFormGroup = new FormGroup({
     street: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
@@ -57,23 +59,5 @@ export class ReactiveForm3Component {
       (this.studentForm.controls.acceptDataManage.touched ||
         this.studentForm.controls.acceptDataManage.dirty)
     );
-  }
-
-  fillRequiredFields() {
-    this.studentForm.patchValue({
-      fullName: 'Nombre',
-      email: 'default@email.com',
-      age: 21,
-      acceptDataManage: true,
-      address: {
-        street: '123 Drew Street',
-        city: 'Barcelona',
-        zip: 10004,
-      },
-    });
-  }
-
-  resetStudentForm() {
-    this.studentForm.reset();
   }
 }
