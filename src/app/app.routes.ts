@@ -7,6 +7,7 @@ import { SimpleTemplateForm4Component } from './forms/simple-template-form4/simp
 import { SimpleReactiveForm1Component } from './forms/simple-reactive-form1/simple-reactive-form1.component';
 import { SimpleReactiveForm2Component } from './forms/simple-reactive-form2/simple-reactive-form2.component';
 import { ReactiveForm3Component } from './forms/reactive-form3/reactive-form3.component';
+import { ReactiveForm4Component } from './forms/reactive-form4/reactive-form4.component';
 
 export const routes: Routes = [
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
@@ -16,5 +17,6 @@ export const routes: Routes = [
   { path: 'react-form-1', component: SimpleReactiveForm1Component },
   { path: 'react-form-2', component: SimpleReactiveForm2Component },
   { path: 'react-form-3', component: ReactiveForm3Component },
+  { path: 'react-form-4', component: ReactiveForm4Component },
   { path: '', component: InicioComponent },
 ];

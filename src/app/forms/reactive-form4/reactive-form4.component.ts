@@ -30,19 +30,19 @@ import { MatButtonModule } from '@angular/material/button';
 export class ReactiveForm4Component {
   private formBuilder = inject(FormBuilder);
 
-  private addressFormGroup = new FormGroup({
-    street: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    state: new FormControl('', []),
-    zip: new FormControl(0, [Validators.required, Validators.min(100)]),
+  private addressFormGroup = this.formBuilder.group({
+    street: ['', Validators.required],
+    city: ['', [Validators.required]],
+    state: [''],
+    zip: [0, [Validators.required, Validators.min(100)]],
   });
 
-  studentForm = new FormGroup({
-    fullName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    age: new FormControl(18, [Validators.required, Validators.min(18)]),
+  studentForm = this.formBuilder.group({
+    fullName: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    age: [18, [Validators.required, Validators.min(18)]],
     address: this.addressFormGroup,
-    acceptDataManage: new FormControl(false, [Validators.requiredTrue]),
+    acceptDataManage: [false, [Validators.requiredTrue]],
   });
 
   onSubmit() {
@@ -59,5 +59,23 @@ export class ReactiveForm4Component {
       (this.studentForm.controls.acceptDataManage.touched ||
         this.studentForm.controls.acceptDataManage.dirty)
     );
+  }
+
+  fillRequiredFields() {
+    this.studentForm.patchValue({
+      fullName: 'Nombre',
+      email: 'default@email.com',
+      age: 21,
+      acceptDataManage: true,
+      address: {
+        street: '123 Drew Street',
+        city: 'Barcelona',
+        zip: 10004,
+      },
+    });
+  }
+
+  resetStudentForm() {
+    this.studentForm.reset();
   }
 }
