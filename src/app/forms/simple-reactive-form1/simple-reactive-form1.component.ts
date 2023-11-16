@@ -44,7 +44,7 @@ import { MatDividerModule } from '@angular/material/divider';
   styles: ``,
 })
 export class SimpleReactiveForm1Component {
-  inputRequired = new FormControl('Mi campo de formulario', [
+  inputRequired: FormControl = new FormControl('Mi campo de formulario', [
     Validators.required,
   ]);
   inputEmail = new FormControl('', [Validators.email]);

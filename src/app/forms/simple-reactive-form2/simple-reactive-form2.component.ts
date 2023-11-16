@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -26,45 +27,102 @@ import { MatDividerModule } from '@angular/material/divider';
     <h3>Ejemplo 2 Reactive Form basico</h3>
 
     <div class="example-form">
-      Validamos campos a traves de la propiedad miFormulario
+      Validamos campos a traves de la propiedad addressFormGroup
     </div>
-    <div>
-      <form [formGroup]="miFormulario">
-        <mat-form-field appearance="fill" class="example-full-width">
-          <mat-label>Campo basico de formulario requerido</mat-label>
+    <div class="example-form">
+      <form [formGroup]="addressFormGroup" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+          <mat-label>Calle</mat-label>
           <input
             matInput
-            type="text"
-            formControlName="miControl"
-            placeholder="Introduzca datos"
+            placeholder="Ingresa la calle"
+            name="street"
+            formControlName="street"
+            required
           />
+          @if ( addressFormGroup.get('street')!.invalid &&
+          addressFormGroup.get('street')!.touched &&
+          addressFormGroup.get('street')!.dirty) {
+          <mat-error>La calle es requerida.</mat-error>
+          }
         </mat-form-field>
-        <mat-form-field appearance="fill" class="example-full-width">
-          <mat-label>Campo basico de formulario tipo email</mat-label>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ciudad</mat-label>
           <input
             matInput
-            type="text"
-            formControlName="otroControl"
-            placeholder="Introduzca datos"
+            placeholder="Ingresa la ciudad"
+            name="city"
+            formControlName="city"
           />
+          @if ( addressFormGroup.get('city')!.invalid &&
+          addressFormGroup.get('city')!.touched &&
+          addressFormGroup.get('city')!.dirty) {
+          <mat-error>La ciudad es requerida.</mat-error>
+          }
         </mat-form-field>
-        <div
-          *ngIf="
-            miFormulario.get('miControl')!.invalid &&
-            miFormulario.get('miControl')!.touched
-          "
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Estado</mat-label>
+          <input
+            matInput
+            placeholder="Ingresa el estado"
+            name="state"
+            formControlName="state"
+          />
+          @if ( addressFormGroup.get('state')!.invalid &&
+          addressFormGroup.get('state')!.touched &&
+          addressFormGroup.get('state')!.dirty) {
+          <mat-error>El estado es requerido.</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Código Postal</mat-label>
+          <input
+            type="number"
+            matInput
+            placeholder="Ingresa el código postal"
+            name="zip"
+            formControlName="zip"
+          />
+          @if ( addressFormGroup.get('zip')!.invalid &&
+          addressFormGroup.get('zip')!.touched &&
+          addressFormGroup.get('zip')!.dirty) {
+          <mat-error>El codigo postal es requerido.</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="!addressFormGroup.valid"
         >
-          Este campo es requerido.
-        </div>
+          Enviar
+        </button>
       </form>
     </div>
   `,
-  styles: ``,
 })
 export class SimpleReactiveForm2Component {
-  miFormulario = new FormGroup({
-    miControl: new FormControl('', [Validators.required]),
-    // Puedes agregar más controles aquí
-    otroControl: new FormControl('', [Validators.required, Validators.email]),
+  addressFormGroup = new FormGroup<ReactiveAddress>({
+    street: new FormControl('', [Validators.required]),
+    city: new FormControl('', [Validators.required]),
+    state: new FormControl('', [Validators.required]),
+    zip: new FormControl(0, [Validators.required]),
   });
+
+  onSubmit() {
+    if (this.addressFormGroup.valid) {
+      console.warn(this.addressFormGroup.value);
+    }
+  }
+}
+
+interface ReactiveAddress {
+  street: AbstractControl<string | null>;
+  city: AbstractControl<string | null>;
+  state: AbstractControl<string | null>;
+  zip: AbstractControl<number | null>;
 }

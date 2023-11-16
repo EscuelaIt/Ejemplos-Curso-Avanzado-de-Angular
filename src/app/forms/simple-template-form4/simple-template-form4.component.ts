@@ -89,10 +89,9 @@ import { Address } from '../../models/address';
             name="zip"
             required
           />
-          <mat-error
-            *ngIf="zipInput.invalid && (zipInput.dirty || zipInput.touched)"
-            >El zip es requerido</mat-error
-          >
+          @if (zipInput.invalid && (zipInput.dirty || zipInput.touched)) {
+          <mat-error>El zip es requerido</mat-error>
+          }
         </mat-form-field>
 
         <button
