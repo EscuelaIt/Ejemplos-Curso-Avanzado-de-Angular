@@ -90,7 +90,9 @@
       @if (addressFormGroup.controls.zip.invalid &&
       addressFormGroup.controls.zip.touched &&
       addressFormGroup.controls.zip.dirty) {
-      <mat-error>El codigo postal es requerido.</mat-error>
+      <mat-error
+        >El codigo postal es requerido y debe ser mayor que 100</mat-error
+      >
       }
     </mat-form-field>
     <div class="margin-b-10">
@@ -117,6 +119,9 @@
       >
         Establecer San Francisco como ciudad
       </button>
+    </div>
+    <div class="example-form">
+      Form Student Status: {{ addressFormGroup.status | json }}
     </div>
   </form>
 </div>

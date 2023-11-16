@@ -50,5 +50,5 @@ interface ReactiveAddress {
   street: AbstractControl<string | null>;
   city: AbstractControl<string | null>;
   state: AbstractControl<string | null>;
-  zip: AbstractControl<number | null>;
+  zip: FormControl<number | null>;
 }

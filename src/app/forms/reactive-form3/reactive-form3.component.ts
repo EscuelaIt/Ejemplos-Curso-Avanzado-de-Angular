@@ -30,7 +30,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 export class ReactiveForm3Component {
   private addressFormGroup = new FormGroup({
     street: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
+    city: new FormControl('Nueva York', [Validators.required]),
     state: new FormControl('', []),
     zip: new FormControl(0, [Validators.required, Validators.min(100)]),
   });
@@ -38,7 +38,10 @@ export class ReactiveForm3Component {
   studentForm = new FormGroup({
     fullName: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    age: new FormControl(18, [Validators.required, Validators.min(18)]),
+    age: new FormControl(18, {
+      nonNullable: true,
+      validators: [Validators.required, Validators.min(18)],
+    }),
     address: this.addressFormGroup,
     acceptDataManage: new FormControl(false, [Validators.requiredTrue]),
   });
