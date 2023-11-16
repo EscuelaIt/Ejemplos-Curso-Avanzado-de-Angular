@@ -44,10 +44,15 @@ export class ReactiveForm4Component {
     age: [18, [Validators.required, Validators.min(18)]],
     address: this.addressFormGroup,
     acceptDataManage: [false, [Validators.requiredTrue]],
-    phones: this.formBuilder.array([this.formBuilder.control(23433434)]),
+    phones: this.formBuilder.array([
+      this.formBuilder.control(
+        { value: 2323, disabled: true },
+        { validators: [Validators.required] }
+      ),
+    ]),
   });
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.studentForm.valid) {
       console.warn(this.studentForm.value);
     } else {
@@ -55,7 +60,7 @@ export class ReactiveForm4Component {
     }
   }
 
-  acceptDataManageControlIsInvalid() {
+  acceptDataManageControlIsInvalid(): boolean {
     return (
       this.studentForm.controls.acceptDataManage.invalid &&
       (this.studentForm.controls.acceptDataManage.touched ||
@@ -63,7 +68,7 @@ export class ReactiveForm4Component {
     );
   }
 
-  fillRequiredFields() {
+  fillRequiredFields(): void {
     this.studentForm.patchValue({
       fullName: 'Nombre',
       email: 'default@email.com',
@@ -77,19 +82,25 @@ export class ReactiveForm4Component {
     });
   }
 
-  resetStudentForm() {
+  resetStudentForm(): void {
     this.studentForm.reset();
   }
 
-  getPhones() {
+  // Mas peligroso en tiempo de ejecucion porque el metodo contains no valida un FormArray
+  getPhones(): FormArray {
     return this.studentForm.controls.phones;
   }
 
-  addPhone() {
+  // Mas seguro en tiempo de ejecucion
+  getPhonesV2(): FormArray {
+    return this.studentForm.get('phones') as FormArray;
+  }
+
+  addPhone(): void {
     this.getPhones().push(this.formBuilder.control(null));
   }
 
-  removePhone(phoneIndex: number) {
+  removePhone(phoneIndex: number): void {
     this.getPhones().removeAt(phoneIndex);
   }
 }

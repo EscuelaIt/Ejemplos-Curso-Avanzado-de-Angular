@@ -3,15 +3,24 @@
   En este ejemplo usamos FormGroups anidados
   <ul>
     <li>
-      Usamos <b>FormBuild</b> para crear los <b>FormGroup</b>> a traves del
-      metodo <b>group</b>
+      Hacemos uso de <b>FormBuild</b> expone una api que permite crear elementos
+      del formulario de forma dinamica usando el metodo
+      <b>control()</b>
+      y el metodo
+      <b>array()</b>
     </li>
     <li>
-      <b>FormBuild</b> expone una api que permite crear elementos del formulario
-      de forma dinamica usando el metodo
-      <b>control</b>
-      y generar lista de controles usando el metodo
-      <b>array</b>
+      Usamos <b>FormBuild</b> para crear los <b>FormGroup</b>> a traves del
+      metodo <b>group()</b>
+    </li>
+    <li>
+      Se construye y se gestiona una lista de <b>FormControls</b> de forma
+      dinamica a traves del objeto <b>FormArray</b> creado con el metodo
+      <b>array()</b>
+    </li>
+    <li>
+      Se muestra el estado del formulario usando la propiedad <b>status</b>
+      Existen estos 4 estados 'VALID' | 'INVALID' | 'PENDING' | 'DISABLED'
     </li>
   </ul>
 </div>
@@ -154,6 +163,9 @@
     </div>
     <div class="example-form">
       Form Student Value: {{ studentForm.value | json }}
+    </div>
+    <div class="example-form">
+      Form Student Status: {{ studentForm.status | json }}
     </div>
     <div class="example-form">Form is valid: {{ studentForm.valid }}</div>
   </form>

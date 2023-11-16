@@ -52,11 +52,14 @@ export class ReactiveForm3Component {
   }
 
   acceptDataManageControlIsInvalid() {
-    return (
-      this.studentForm.controls.acceptDataManage.invalid &&
-      (this.studentForm.controls.acceptDataManage.touched ||
-        this.studentForm.controls.acceptDataManage.dirty)
-    );
+    if (this.studentForm.contains('acceptDataManage')) {
+      return (
+        this.studentForm.controls.acceptDataManage.invalid &&
+        (this.studentForm.controls.acceptDataManage.touched ||
+          this.studentForm.controls.acceptDataManage.dirty)
+      );
+    }
+    return false;
   }
 
   fillRequiredFields() {
