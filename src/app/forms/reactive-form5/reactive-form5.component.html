@@ -1,0 +1,23 @@
+<h3>Ejemplo 5 Reactive Form</h3>
+<div class="example-form padding-10 margin-20">
+  En este ejemplo usamos FormGroups anidados
+  <ul>
+    <li>Uso de FormRecord</li>
+  </ul>
+</div>
+<div>
+  <h1>Contactos</h1>
+  <form [formGroup]="contactForm">
+    <div>
+      <mat-form-field appearance="fill" *ngFor="let name of contactsKeys">
+        <mat-label>{{ name }}</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Direccion"
+          formControlName="{{ name }}"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
