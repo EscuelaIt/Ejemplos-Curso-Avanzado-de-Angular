@@ -25,9 +25,27 @@ import { MatDividerModule } from '@angular/material/divider';
   ],
   template: `
     <h3>Ejemplo 2 Reactive Form basico</h3>
-
-    <div class="example-form">
-      Validamos campos a traves de la propiedad addressFormGroup
+    <div class="example-form padding-10 margin-20">
+      Aqui usamos la clase FormGroup para crear grupos de FormControls
+      <ul>
+        <li>
+          Se usa la directiva <b>formControlName</b> para hacer referencia a la
+          propiedad
+        </li>
+        <li>
+          Se puede acceder al formControl especifico con
+          <b>addressFormGroup.get('street')</b> para validarlo
+        </li>
+        <li>
+          El form control expone una api con los mismos metodos de
+          <b>touched, invalid, dirty</b>
+        </li>
+        <li>Controlamos los requisitos de los campos desde la clase</li>
+        <li>
+          Podemos verificar el estado del formulario y sus controles tanto desde
+          la clase y desde el template
+        </li>
+      </ul>
     </div>
     <div class="example-form">
       <form [formGroup]="addressFormGroup" (ngSubmit)="onSubmit()">
