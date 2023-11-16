@@ -2,7 +2,17 @@
 <div class="example-form padding-10 margin-20">
   En este ejemplo usamos FormGroups anidados
   <ul>
-    <li>Usamos uso de <b>FormBuild</b> para crear los formularios</li>
+    <li>
+      Usamos <b>FormBuild</b> para crear los <b>FormGroup</b>> a traves del
+      metodo <b>group</b>
+    </li>
+    <li>
+      <b>FormBuild</b> expone una api que permite crear elementos del formulario
+      de forma dinamica usando el metodo
+      <b>control</b>
+      y generar lista de controles usando el metodo
+      <b>array</b>
+    </li>
   </ul>
 </div>
 <div>
@@ -31,6 +41,26 @@
             formControlName="age"
           />
         </mat-form-field>
+        <div formArrayName="phones">
+          <h2>Telefonos</h2>
+          <button mat-button type="button" (click)="addPhone()">
+            Agregar otro telefono
+          </button>
+          <div *ngFor="let phone of getPhones().controls; let i = index">
+            <div style="display: inline; padding: 0.4em; width: 50%">
+              <label>Telefono {{ i + 1 }}</label>
+              <input
+                matInput
+                type="number"
+                placeholder="Ingresa telefono"
+                [formControlName]="i"
+              />
+            </div>
+            <div style="display: inline">
+              <button type="button" (click)="removePhone(i)">-</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="margin-b-10">
         <mat-divider></mat-divider>

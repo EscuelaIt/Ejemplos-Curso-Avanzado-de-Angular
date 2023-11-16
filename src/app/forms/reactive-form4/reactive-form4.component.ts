@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -43,6 +44,7 @@ export class ReactiveForm4Component {
     age: [18, [Validators.required, Validators.min(18)]],
     address: this.addressFormGroup,
     acceptDataManage: [false, [Validators.requiredTrue]],
+    phones: this.formBuilder.array([this.formBuilder.control(23433434)]),
   });
 
   onSubmit() {
@@ -77,5 +79,17 @@ export class ReactiveForm4Component {
 
   resetStudentForm() {
     this.studentForm.reset();
+  }
+
+  getPhones() {
+    return this.studentForm.controls.phones;
+  }
+
+  addPhone() {
+    this.getPhones().push(this.formBuilder.control(null));
+  }
+
+  removePhone(phoneIndex: number) {
+    this.getPhones().removeAt(phoneIndex);
   }
 }
