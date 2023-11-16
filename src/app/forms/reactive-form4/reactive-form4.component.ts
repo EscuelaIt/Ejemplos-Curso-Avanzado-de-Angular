@@ -103,4 +103,12 @@ export class ReactiveForm4Component {
   removePhone(phoneIndex: number): void {
     this.getPhones().removeAt(phoneIndex);
   }
+
+  // Metodo de ejemplo para el shortcut de crear formularios sin { noNullable}
+  private generateNonNullableForm() {
+    const exampleNonNullableGroup = this.formBuilder.nonNullable.group({
+      email: '',
+      password: '',
+    });
+  }
 }

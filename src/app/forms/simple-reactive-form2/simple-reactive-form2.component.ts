@@ -5,6 +5,8 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -29,8 +31,13 @@ export class SimpleReactiveForm2Component {
   addressFormGroup = new FormGroup<ReactiveAddress>({
     street: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
-    state: new FormControl('', []),
+    state: new FormControl<string>('', []),
     zip: new FormControl(0, [Validators.required, Validators.min(100)]),
+  });
+
+  private myUntypedForm = new UntypedFormGroup({
+    email: new UntypedFormControl(''),
+    password: new UntypedFormControl(''),
   });
 
   onSubmit() {
