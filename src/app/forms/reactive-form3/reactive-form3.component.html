@@ -16,10 +16,11 @@
     </li>
   </ul>
 </div>
-<div class="example-form">
+<div>
+  <h1>Datos del estudiante</h1>
   <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
     <div>
-      <div class="margin-b-10">
+      <div class="margin-b-10 example-form">
         <mat-form-field appearance="fill">
           <mat-label>Nombre completo</mat-label>
           <input
@@ -37,47 +38,52 @@
         <mat-divider></mat-divider>
       </div>
       <div formGroupName="address">
-        <mat-form-field appearance="fill">
-          <mat-label>Calle</mat-label>
-          <input
-            matInput
-            placeholder="Ingresa la calle"
-            name="street"
-            formControlName="street"
-            required
-          />
-        </mat-form-field>
+        <div class="example-full-width">
+          <h3>Direccion</h3>
+        </div>
+        <div class="address-group">
+          <mat-form-field>
+            <mat-label>Calle</mat-label>
+            <input
+              matInput
+              placeholder="Ingresa la calle"
+              name="street"
+              formControlName="street"
+              required
+            />
+          </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Ciudad</mat-label>
-          <input
-            matInput
-            placeholder="Ingresa la ciudad"
-            name="city"
-            formControlName="city"
-          />
-        </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Ciudad</mat-label>
+            <input
+              matInput
+              placeholder="Ingresa la ciudad"
+              name="city"
+              formControlName="city"
+            />
+          </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Estado</mat-label>
-          <input
-            matInput
-            placeholder="Ingresa el estado (Opcional)"
-            name="state"
-            formControlName="state"
-          />
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Estado</mat-label>
+            <input
+              matInput
+              placeholder="Ingresa el estado (Opcional)"
+              name="state"
+              formControlName="state"
+            />
+          </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Código Postal (Mayor que 100)</mat-label>
-          <input
-            type="number"
-            matInput
-            placeholder="Ingresa el código postal"
-            name="studentForm.address.zip"
-            formControlName="zip"
-          />
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Código Postal (Mayor que 100)</mat-label>
+            <input
+              type="number"
+              matInput
+              placeholder="Ingresa el código postal"
+              name="studentForm.address.zip"
+              formControlName="zip"
+            />
+          </mat-form-field>
+        </div>
       </div>
       <div>
         <mat-label>Aceptar gestion de datos</mat-label>
