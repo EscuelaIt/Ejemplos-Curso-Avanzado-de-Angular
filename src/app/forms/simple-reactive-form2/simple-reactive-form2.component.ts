@@ -59,8 +59,8 @@ import { MatDividerModule } from '@angular/material/divider';
             required
           />
           @if ( addressFormGroup.get('street')!.invalid &&
-          addressFormGroup.get('street')!.touched &&
-          addressFormGroup.get('street')!.dirty) {
+          (addressFormGroup.get('street')!.touched ||
+          addressFormGroup.get('street')!.dirty)) {
           <mat-error>La calle es requerida.</mat-error>
           }
         </mat-form-field>
