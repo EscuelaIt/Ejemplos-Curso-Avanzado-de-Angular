@@ -7,8 +7,12 @@
       propiedad
     </li>
     <li>
-      Se puede acceder al formControl especifico con
-      <b>addressFormGroup.get('street')</b> para validarlo
+      Usamos el metodo get del formGroup para obtener un formControl especifico
+      y acceder a su api ej: fg.get('street')
+    </li>
+    <li>
+      Usamos el metodo controls en la instancia del formGroup para obtener un
+      formControl especifico y acceder a su api ej: fb.control.street
     </li>
     <li>
       El form control expone una api con los mismos metodos de
@@ -83,9 +87,9 @@
         name="zip"
         formControlName="zip"
       />
-      @if ( addressFormGroup.get('zip')!.invalid &&
-      addressFormGroup.get('zip')!.touched &&
-      addressFormGroup.get('zip')!.dirty) {
+      @if (addressFormGroup.controls.zip.invalid &&
+      addressFormGroup.controls.zip.touched &&
+      addressFormGroup.controls.zip.dirty) {
       <mat-error>El codigo postal es requerido.</mat-error>
       }
     </mat-form-field>
