@@ -1,25 +1,29 @@
-<header>
-  <h1>Ejemplos</h1>
-</header>
-<main>
+<mat-toolbar>
+  <span>Ejemplos de Angular</span>
+</mat-toolbar>
+<div>
   <div>
-    <a routerLink="/" routerLinkActive="router-link-active">Inicio</a>
+    <div>
+      <button mat-button routerLink="/">Inicio</button>
+    </div>
+    <mat-divider class="menu-delimiter"></mat-divider>
+    <div>
+      <button mat-button routerLink="/temp-form-1">Simp-Template-Form-1</button>
+    </div>
+    <mat-divider class="menu-delimiter"></mat-divider>
+    <div>
+      <button mat-button routerLink="/temp-form-2">Simp-Template-Form-2</button>
+    </div>
+    <mat-divider class="menu-delimiter"></mat-divider>
+    <div>
+      <button mat-button routerLink="/temp-form-3">Simp-Template-Form-3</button>
+    </div>
+    <mat-divider class="menu-delimiter"></mat-divider>
+    <div>
+      <button mat-button routerLink="/temp-form-4">Simp-Template-Form-4</button>
+    </div>
   </div>
-  <div>
-    <a routerLink="/temp-form-1" routerLinkActive="router-link-active">Template form 1</a>
-  </div>
-  <div>
-    <a routerLink="/react-form-1" routerLinkActive="router-link-active">Reactive form 1</a>
-  </div>
-  <div>
-    <a routerLink="/temp-form-2" routerLinkActive="router-link-active">Template Form 2</a>
-  </div>
-  <div>
-    <a routerLink="/react-form-2" routerLinkActive="router-link-active">Reactive Form 2</a>
-  </div>
-  react-form-2
-</main>
+</div>
 <div class="main">
   <router-outlet></router-outlet>
 </div>
-
