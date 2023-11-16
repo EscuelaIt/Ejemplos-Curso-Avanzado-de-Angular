@@ -66,7 +66,7 @@ import { Address } from '../../models/address';
             type="number"
             matInput
             placeholder="Ingresa el código postal"
-            [(ngModel)]="address.zip"
+            [ngModel]="address.zip"
             name="zip"
           />
         </mat-form-field>

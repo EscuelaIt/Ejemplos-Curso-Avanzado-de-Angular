@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -32,14 +32,14 @@ import { Address } from '../../models/address';
     </div>
 
     <div class="example-form">
-      <form #addressForm="ngForm">
+      <form #addressForm="ngForm" (ngSubmit)="onSubmit(addressForm)">
         <mat-form-field appearance="fill">
           <mat-label>Calle</mat-label>
           <input
             matInput
             #streetInput="ngModel"
             placeholder="Ingresa la calle"
-            [(ngModel)]="address.street"
+            ngModel
             name="street"
             required
           />
@@ -54,7 +54,7 @@ import { Address } from '../../models/address';
             matInput
             #cityInput="ngModel"
             placeholder="Ingresa la ciudad"
-            [(ngModel)]="address.city"
+            ngModel
             name="city"
             required
           />
@@ -102,16 +102,6 @@ import { Address } from '../../models/address';
         >
           Enviar
         </button>
-
-        <!-- Agrega campos adicionales aquí -->
-
-        <button
-          mat-raised-button
-          color="primary"
-          [disabled]="!addressForm.valid"
-        >
-          Enviar
-        </button>
       </form>
     </div>
   `,
@@ -124,4 +114,8 @@ export class SimpleTemplateForm4Component {
     state: '',
     zip: 0,
   };
+
+  onSubmit(form: NgForm) {
+    console.warn(form.value);
+  }
 }
