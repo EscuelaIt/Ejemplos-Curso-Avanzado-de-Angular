@@ -66,7 +66,7 @@ import { MatDividerModule } from '@angular/material/divider';
           <mat-label>Estado</mat-label>
           <input
             matInput
-            placeholder="Ingresa el estado"
+            placeholder="Ingresa el estado (Opcional)"
             name="state"
             formControlName="state"
           />
@@ -92,15 +92,21 @@ import { MatDividerModule } from '@angular/material/divider';
           <mat-error>El codigo postal es requerido.</mat-error>
           }
         </mat-form-field>
-
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          [disabled]="!addressFormGroup.valid"
-        >
-          Enviar
-        </button>
+        <div class="margin-b-10">
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="!addressFormGroup.valid"
+          >
+            Enviar
+          </button>
+        </div>
+        <div class="margin-b-10">
+          <button type="submit" mat-raised-button color="primary">
+            Enviar sin validar
+          </button>
+        </div>
       </form>
     </div>
   `,
@@ -109,13 +115,15 @@ export class SimpleReactiveForm2Component {
   addressFormGroup = new FormGroup<ReactiveAddress>({
     street: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
-    state: new FormControl('', [Validators.required]),
-    zip: new FormControl(0, [Validators.required]),
+    state: new FormControl('', []),
+    zip: new FormControl(0, [Validators.required, Validators.min(100)]),
   });
 
   onSubmit() {
     if (this.addressFormGroup.valid) {
       console.warn(this.addressFormGroup.value);
+    } else {
+      console.error('Formulario invalido');
     }
   }
 }
