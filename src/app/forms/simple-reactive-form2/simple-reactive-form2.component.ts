@@ -35,6 +35,9 @@ export class SimpleReactiveForm2Component {
     zip: new FormControl(0, [Validators.required, Validators.min(100)]),
   });
 
+  /**
+   * Ejemplo de formulario no tipado
+   */
   private myUntypedForm = new UntypedFormGroup({
     email: new UntypedFormControl(''),
     password: new UntypedFormControl(''),
