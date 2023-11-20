@@ -50,6 +50,7 @@
       <mat-form-field appearance="fill" *ngFor="let contactId of contactsKeys">
         <mat-label>{{ contactId }}</mat-label>
         <input
+          readonly
           type="text"
           matInput
           placeholder="Direccion"
@@ -59,4 +60,7 @@
       </mat-form-field>
     </div>
   </form>
+  <div>
+    <h3>Form value: {{ contactForm.value | json }}</h3>
+  </div>
 </div>

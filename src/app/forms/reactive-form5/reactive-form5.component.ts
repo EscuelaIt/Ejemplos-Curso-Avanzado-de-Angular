@@ -38,21 +38,12 @@ export class ReactiveForm5Component {
   });
 
   constructor() {
-    this.contactForm.addControl(
-      'Pedro',
-      new FormControl('Direccion de Pedro', Validators.required)
-    );
-    this.contactForm.addControl(
-      'Maria',
-      new FormControl('Direccion de Maria', Validators.required)
-    );
+    this.contactForm.addControl('Pedro', new FormControl('Direccion de Pedro'));
+    this.contactForm.addControl('Maria', new FormControl('Direccion de Maria'));
   }
 
   addContact(name: string, address: string): void {
-    this.contactForm.addControl(
-      name,
-      this.formBuilder.control(address, Validators.required)
-    );
+    this.contactForm.addControl(name, this.formBuilder.control(address));
   }
 
   removeContact(name: string) {
