@@ -32,28 +32,48 @@ import { MatButtonModule } from '@angular/material/button';
 export class ReactiveForm5Component {
   private formBuilder = inject(FormBuilder);
   public contactForm = new FormRecord<FormControl<string | null>>({});
+  public addContactForm = this.formBuilder.group({
+    name: ['', Validators.required],
+    address: ['', Validators.required],
+  });
 
   constructor() {
     this.contactForm.addControl(
-      'Alberto',
-      new FormControl('Direccion de Alberto')
+      'Pedro',
+      new FormControl('Direccion de Pedro', Validators.required)
     );
-    this.contactForm.addControl('Maria', new FormControl('Direccion de Maria'));
+    this.contactForm.addControl(
+      'Maria',
+      new FormControl('Direccion de Maria', Validators.required)
+    );
   }
 
-  addContact(name: string, phoneNumber: string): void {
+  addContact(name: string, address: string): void {
     this.contactForm.addControl(
       name,
-      this.formBuilder.control(phoneNumber, Validators.required)
+      this.formBuilder.control(address, Validators.required)
     );
+  }
+
+  removeContact(name: string) {
+    this.contactForm.removeControl(name);
   }
 
   public getContactName() {
-    console.log(this.contactForm.controls);
     return this.contactForm.controls;
   }
 
   get contactsKeys(): string[] {
     return Object.keys(this.contactForm.controls);
+  }
+
+  saveContact() {
+    const name = this.addContactForm.get('name')!.value;
+    const address = this.addContactForm.get('address')!.value;
+    if (name && address) {
+      this.addContact(name, address);
+    }
+
+    this.addContactForm.reset();
   }
 }
