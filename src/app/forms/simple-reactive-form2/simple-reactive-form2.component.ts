@@ -51,6 +51,23 @@ export class SimpleReactiveForm2Component {
   setCityValue(cityName: string) {
     this.addressFormGroup.controls.city.setValue(cityName);
   }
+
+  cityIsValid(): boolean {
+    return !(
+      (this.addressFormGroup.get('city')!.touched ||
+        this.addressFormGroup.get('city')!.dirty) &&
+      this.addressFormGroup.get('city')!.invalid
+    );
+  }
+
+  setDefaultFormGroupValue() {
+    this.addressFormGroup.setValue({
+      city: 'city',
+      state: 'state',
+      street: 'street',
+      zip: 1000,
+    });
+  }
 }
 
 interface ReactiveAddress {

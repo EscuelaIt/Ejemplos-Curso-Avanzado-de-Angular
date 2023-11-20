@@ -60,9 +60,7 @@
         name="city"
         formControlName="city"
       />
-      @if ( addressFormGroup.get('city')!.invalid &&
-      addressFormGroup.get('city')!.touched &&
-      addressFormGroup.get('city')!.dirty) {
+      @if (!cityIsValid()) {
       <mat-error>La ciudad es requerida.</mat-error>
       }
     </mat-form-field>
@@ -75,11 +73,6 @@
         name="state"
         formControlName="state"
       />
-      @if ( addressFormGroup.get('state')!.invalid &&
-      addressFormGroup.get('state')!.touched &&
-      addressFormGroup.get('state')!.dirty) {
-      <mat-error>El estado es requerido.</mat-error>
-      }
     </mat-form-field>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -92,8 +85,9 @@
         formControlName="zip"
       />
       @if (addressFormGroup.controls.zip.invalid &&
-      addressFormGroup.controls.zip.touched &&
-      addressFormGroup.controls.zip.dirty) {
+      addressFormGroup.controls.zip.touched ||
+      addressFormGroup.controls.zip.invalid &&
+      addressFormGroup.controls.zip.dirty ) {
       <mat-error
         >El codigo postal es requerido y debe ser mayor que 100</mat-error
       >
