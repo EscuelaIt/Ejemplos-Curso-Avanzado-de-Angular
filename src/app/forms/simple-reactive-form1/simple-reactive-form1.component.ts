@@ -39,6 +39,13 @@ import { MatDividerModule } from '@angular/material/divider';
           placeholder="Introduzca email"
         />
       </mat-form-field>
+      <div>
+        <h2>
+          Copia Email con asyncPipe: {{ inputEmail.valueChanges | async }}
+        </h2>
+        <h2>Copia Email con subscribe: {{ email }}</h2>
+        <h2>Copia Email con value: {{ inputEmail.value }}</h2>
+      </div>
     </div>
   `,
   styles: ``,
@@ -48,4 +55,11 @@ export class SimpleReactiveForm1Component {
     Validators.required,
   ]);
   inputEmail = new FormControl('', [Validators.email]);
+  email = '';
+
+  constructor() {
+    this.inputEmail.valueChanges.subscribe((emailValue) => {
+      this.email = emailValue!;
+    });
+  }
 }
