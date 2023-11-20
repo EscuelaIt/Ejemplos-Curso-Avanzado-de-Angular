@@ -10,6 +10,7 @@ import { ReactiveForm3Component } from './forms/reactive-form3/reactive-form3.co
 import { ReactiveForm4Component } from './forms/reactive-form4/reactive-form4.component';
 import { ReactiveForm5Component } from './forms/reactive-form5/reactive-form5.component';
 import { ReactiveForm6Component } from './forms/reactive-form6/reactive-form6.component';
+import { ReactiveForm7Component } from './forms/reactive-form7/reactive-form7.component';
 
 export const routes: Routes = [
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
@@ -22,5 +23,6 @@ export const routes: Routes = [
   { path: 'react-form-4', component: ReactiveForm4Component },
   { path: 'react-form-5', component: ReactiveForm5Component },
   { path: 'react-form-6', component: ReactiveForm6Component },
+  { path: 'react-form-7', component: ReactiveForm7Component },
   { path: '', component: InicioComponent },
 ];
