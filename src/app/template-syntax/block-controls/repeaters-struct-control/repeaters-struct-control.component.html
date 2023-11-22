@@ -1,0 +1,78 @@
+<div>
+  <button (click)="clearList()">Vaciar lista</button>
+</div>
+<div>
+  <h2>Ejemplo con &#64;for</h2>
+  <ul>
+    @for (
+      item of items; 
+      track item.id;
+      let total=$count; 
+      let idx=$index;
+      let firstElement=$first;
+      let lastElement=$last;
+      let isEven=$even;
+      let isOdd=$odd;
+    ) { 
+      <li>
+      @if (isEven) {
+        Es Indice Par
+      } 
+      @if (isOdd) {
+        Es Indice Impar
+      }
+      {{ idx }} de {{ total }}:
+      @if (firstElement) {
+        <b>Primero en la lista</b>
+      } @else if (idx === 1) {
+        <b>Siguiente en la lista</b>
+      } @else if (lastElement) {
+        <b>Ultimo en la lista</b>
+      } @else {
+        <b>Resto</b>
+      }
+      ---  <b>Titulo:</b> {{ item.title }} <b>Autor</b>: {{ item.author }}
+      </li>
+    } @empty {
+      <li> No hay elementos. </li>
+    }
+  </ul>
+  <div>
+    <h3>Codigo ejemplo sencillo</h3>
+    <pre>
+      <code>
+      {{ exampleForCodeSimple }} 
+      </code>
+    </pre>
+  </div>
+  <div>
+    <h3>Codigo ejemplo complejo</h3>
+    <pre>
+      <code>
+      {{ exampleForCodeComplex }} 
+      </code>
+    </pre>
+  </div>
+</div>
+  
+<div>
+  <h3>Ejemplo con *ngFor y *ngIf</h3>
+  <ul>
+    <li *ngIf="items.length==0">No hay elementos.</li>
+    <li *ngFor="let item of items; trackBy: bookTrackBy; let i = index; let isEven = even; let isOdd = odd; let isFirst = first;">
+      {{ i }}: {{ item.title }}
+      <span *ngIf="isFirst"> - Primer elemento</span>
+      <span *ngIf="isEven"> - Índice par</span>
+      <span *ngIf="isOdd"> - Índice impar</span>
+    </li>
+  </ul>
+  <div>
+    <h3>Codigo ejemplo con ngFor</h3>
+    <pre>
+      <code>
+      {{ exampleNgForCode }} 
+      </code>
+    </pre>
+  </div>
+</div>
+  

@@ -30,10 +30,12 @@ import { MatRadioModule } from '@angular/material/radio';
     MatRadioModule,
   ],
   template: `
-    <h1>Ejemplo 6 Reactive Form</h1>
+    <h1>
+      Ejemplo 6 Reactive Form (Ejemplo básico con RadioButtons y Checkbox)
+    </h1>
     <div class="example-form padding-10 margin-20">
-      En este ejemplo usamos elementos de formularios como radiobuttons y
-      checkboxes
+      En este ejemplo usamos elementos de formularios como radiobuttons y un
+      checkbox
     </div>
     <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
       <mat-form-field>

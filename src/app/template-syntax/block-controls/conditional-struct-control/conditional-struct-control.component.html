@@ -1,0 +1,132 @@
+<h1>Ejemplos con bloque condicional If</h1>
+<div class="with-100 margin-t-50 margin-b-50">
+  <mat-divider class="with-100"></mat-divider>
+</div>
+<div>
+  <h2>Bloque condicional <b>If</b> sencillo</h2>
+  <div>
+    <h3>Ejemplo con bloque de control If</h3>
+    <div>
+      <label>Mostrar fecha actual</label>
+      <input type="checkbox" [formControl]="showDate" />
+    </div>
+    <div>
+      @if (showDate.valid) {
+      <p><b>Fecha:</b>{{ currentDate | date }}</p>
+      }
+    </div>
+    <div>
+      <pre>
+      <code>
+      {{ example1SimpleConditionalCode }}
+      </code>
+    </pre>
+    </div>
+  </div>
+  <div>
+    <h3>Ejemplo con directiva ngIf</h3>
+    <div>
+      <p *ngIf="showDate.valid"><b>Fecha:</b>{{ currentDate | date }}</p>
+    </div>
+    <div>
+      <pre>
+      <code>
+      {{ example1SimpleOldConditionalCode }}
+      </code>
+    </pre>
+    </div>
+  </div>
+</div>
+<div class="with-100 margin-t-50 margin-b-50">
+  <mat-divider class="with-100"></mat-divider>
+</div>
+<div>
+  <h2>Bloque condicional <b>If else</b></h2>
+  <div>
+    <h3>Ejemplo con bloque de control If</h3>
+    <div>
+      <label>Mostrar fecha actual</label>
+      <input type="checkbox" [formControl]="showDateExample2" />
+    </div>
+    <div>
+      @if (showDateExample2.valid) {
+      <p><b>Fecha:</b>{{ currentDate | date }}</p>
+      } @else {
+      <p>{{ notDateContent }}</p>
+      }
+    </div>
+    <div>
+      <pre>
+      <code>
+      {{ example2ConditionalCodeIfElse }}
+      </code>
+    </pre>
+    </div>
+  </div>
+  <div>
+    <h3>Ejemplo con directiva ngIf</h3>
+    <div>
+      <p *ngIf="showDateExample2.valid; else notDateBlock">
+        <b>Fecha:</b>{{ currentDate | date }}
+      </p>
+      <ng-template #notDateBlock>
+        <p>{{ notDateContent }}</p>
+      </ng-template>
+    </div>
+    <div>
+      <pre>
+      <code>
+      {{ oldConditionalCodeIfElse }}
+      </code>
+    </pre>
+    </div>
+  </div>
+</div>
+<div class="with-100 margin-t-50 margin-b-50">
+  <mat-divider class="with-100"></mat-divider>
+</div>
+<div>
+  <h2>Bloque condicional <b>If else if con alias de propiedad</b></h2>
+  <div>
+    <h3>Ejemplo con bloque de control If</h3>
+    <div>
+      <label>Seleccionar color favorito</label>
+      <form [formGroup]="formColor">
+        <label>
+          <input type="radio" formControlName="favoriteColor" value="red" />
+          Rojo
+        </label>
+        <label>
+          <input type="radio" formControlName="favoriteColor" value="green" />
+          Verde
+        </label>
+        <label>
+          <input type="radio" formControlName="favoriteColor" value="blue" />
+          Azul
+        </label>
+      </form>
+    </div>
+    @if (colorValueText$ | async; as selectedColor) {
+      <div>
+        <h4>Color seleccionado es:</h4>
+        <p>
+          @if (selectedColor==='red') { 
+            Rojo 
+          } @else if (selectedColor==='green') { 
+            Verde 
+          } @else { 
+            Azul 
+          }
+        </p>
+      </div>
+    }
+
+    <div>
+      <pre>
+      <code>
+      {{ example3ConditionalCodeIfElse }}
+      </code>
+    </pre>
+    </div>
+  </div>
+</div>

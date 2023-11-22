@@ -49,10 +49,17 @@ mat-form-field {
   margin: 10px;
 }
 
+.margin-b-50 {
+  margin-bottom: 50px;
+}
+
+.margin-t-50 {
+  margin-top: 50px;
+}
+
 .margin-b-10 {
   margin-bottom: 10px;
 }
-
 
 .margin-t-10 {
   margin-top: 10px;

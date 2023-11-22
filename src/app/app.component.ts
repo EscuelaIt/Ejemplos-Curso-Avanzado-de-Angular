@@ -22,6 +22,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatToolbarModule,
     MatDividerModule,
+    MatMenuModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

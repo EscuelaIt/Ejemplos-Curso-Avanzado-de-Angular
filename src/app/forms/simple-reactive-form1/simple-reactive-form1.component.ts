@@ -18,7 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDividerModule,
   ],
   template: `
-    <h3>Ejemplo 1 Reactive Form básicos</h3>
+    <h3>Ejemplo 1 Reactive Form (Ejemplo Básico)</h3>
 
     <div class="example-form">
       <mat-form-field appearance="fill" class="example-full-width">

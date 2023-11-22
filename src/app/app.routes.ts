@@ -11,6 +11,9 @@ import { ReactiveForm4Component } from './forms/reactive-form4/reactive-form4.co
 import { ReactiveForm5Component } from './forms/reactive-form5/reactive-form5.component';
 import { ReactiveForm6Component } from './forms/reactive-form6/reactive-form6.component';
 import { ReactiveForm7Component } from './forms/reactive-form7/reactive-form7.component';
+import { ConditionalStructControlComponent } from './template-syntax/block-controls/conditional-struct-control/conditional-struct-control.component';
+import { RepeatersStructControlComponent } from './template-syntax/block-controls/repeaters-struct-control/repeaters-struct-control.component';
+import { SwitchStructControlComponent } from './template-syntax/block-controls/switch-struct-control/switch-struct-control.component';
 
 export const routes: Routes = [
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
@@ -24,5 +27,8 @@ export const routes: Routes = [
   { path: 'react-form-5', component: ReactiveForm5Component },
   { path: 'react-form-6', component: ReactiveForm6Component },
   { path: 'react-form-7', component: ReactiveForm7Component },
+  { path: 'if-block-control', component: ConditionalStructControlComponent },
+  { path: 'for-block-control', component: RepeatersStructControlComponent },
+  { path: 'switch-block-control', component: SwitchStructControlComponent },
   { path: '', component: InicioComponent },
 ];
