@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { SimpleTemplateForm1Component } from './forms/simple-template-form1/simple-template-form1.component';
+import { SimpleTemplateForm1Component } from '../../forms/simple-template-form1/simple-template-form1.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
-import { MenuContainerComponent } from './menus/menu-container/menu-container.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-menu-container',
   standalone: true,
   imports: [
     CommonModule,
@@ -24,11 +23,10 @@ import { MenuContainerComponent } from './menus/menu-container/menu-container.co
     MatToolbarModule,
     MatDividerModule,
     MatMenuModule,
-    MenuContainerComponent
   ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: './menu-container.component.html',
+  styles: ``
 })
-export class AppComponent {
-  title = 'curso-angular-avanzado-examples';
+export class MenuContainerComponent {
+
 }
