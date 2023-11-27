@@ -68,3 +68,11 @@ mat-form-field {
 .margin-20 {
   margin: 20px;
 }
+
+.bg-color-green {
+  background-color: rgb(167, 253, 210);
+}
+
+.min-h-2em {
+  min-height: 2em;
+}

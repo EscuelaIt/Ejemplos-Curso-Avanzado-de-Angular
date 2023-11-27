@@ -14,6 +14,7 @@ import { ReactiveForm7Component } from './forms/reactive-form7/reactive-form7.co
 import { ConditionalStructControlComponent } from './template-syntax/block-controls/conditional-struct-control/conditional-struct-control.component';
 import { RepeatersStructControlComponent } from './template-syntax/block-controls/repeaters-struct-control/repeaters-struct-control.component';
 import { SwitchStructControlComponent } from './template-syntax/block-controls/switch-struct-control/switch-struct-control.component';
+import { Defer1Component } from './template-syntax/defer/defer-1/defer-1.component';
 
 export const routes: Routes = [
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
@@ -30,5 +31,6 @@ export const routes: Routes = [
   { path: 'if-block-control', component: ConditionalStructControlComponent },
   { path: 'for-block-control', component: RepeatersStructControlComponent },
   { path: 'switch-block-control', component: SwitchStructControlComponent },
+  { path: 'defer-1', component: Defer1Component },
   { path: '', component: InicioComponent },
 ];
