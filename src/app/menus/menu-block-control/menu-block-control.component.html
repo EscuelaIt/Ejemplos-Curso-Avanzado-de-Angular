@@ -1,0 +1,22 @@
+<div>
+  <button mat-button [matMenuTriggerFor]="blockcontrolssmenu">
+    Estructuras de control de flujo
+  </button>
+  <mat-menu #blockcontrolssmenu="matMenu">
+    <div>
+      <button mat-button routerLink="/if-block-control">
+        Condicional (If)
+      </button>
+    </div>
+    <mat-divider class="menu-delimiter"></mat-divider>
+    <div>
+      <button mat-button routerLink="/for-block-control">Bucle (for)</button>
+    </div>
+    <mat-divider class="menu-delimiter"></mat-divider>
+    <div>
+      <button mat-button routerLink="/switch-block-control">
+        Seleccion (switch)
+      </button>
+    </div>
+  </mat-menu>
+</div>
