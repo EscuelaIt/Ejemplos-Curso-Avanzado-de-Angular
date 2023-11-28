@@ -76,3 +76,15 @@ mat-form-field {
 .min-h-2em {
   min-height: 2em;
 }
+
+
+pre.example-code {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+code.example-code {
+    font-family: 'Courier New', Courier, monospace;
+}
