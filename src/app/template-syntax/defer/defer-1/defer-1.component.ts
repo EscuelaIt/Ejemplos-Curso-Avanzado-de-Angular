@@ -8,7 +8,7 @@ import { DeferedContentWithErrorComponent } from './defered-content-with-error/d
   standalone: true,
   imports: [CommonModule, DeferedContent1Component, DeferedContentWithErrorComponent],
   template: `
-    
+
     <h1>Vistas diferibles</h1>
     <div class="margin-b-10">
       <div class="margin-b-10">
@@ -32,7 +32,7 @@ import { DeferedContentWithErrorComponent } from './defered-content-with-error/d
       <div class="margin-b-10">
         <h2>Ejemplo 2 - Con bloque &#64;placeholder</h2>
         <p>El contenido cargado perezosamente se mostrará en el <b>cuadro verde</b> al pasar 5 segundos. 5 segundos es el tiempo mínimo que se mostrará el contenido del bloque <b>placeholder</b> y después cambiará al contenido final</p>
-        
+
       </div>
       <div>
         <div>
@@ -84,21 +84,45 @@ import { DeferedContentWithErrorComponent } from './defered-content-with-error/d
         </div>
         <div class="bg-color-green min-h-2em">
           @defer {
-            <app-defered-content-with-error/>
+            <app-defered-content-1/>
+          } @placeholder (minimum 5000ms) {
+            <p>Marcador mostrado durante 5 segundo</p>
           } @error {
             <p>Falló la carga del componente</p>
           }
         </div>
       </div>
     </div>
-    
+
+    <div class="margin-b-10">
+      <div class="margin-b-10">
+        <h2>Ejemplo 5 - Con Trigger</h2>
+        <p></p>
+      </div>
+      <div>
+        <div>
+          Contenido con trigger
+        </div>
+        <div class="bg-color-green min-h-2em">
+          @defer (on interaction; on timer(5s)) {
+            <app-defered-content-1/>
+          } @placeholder () {
+            <p>Marcador mostrado durante 5 segundo si no hay interaccion</p>
+          }
+        </div>
+      </div>
+    </div>
+
   `,
-  styles: ``
+  styles: ``,
 })
 export class Defer1Component implements OnInit {
 
+  aa = () => {
+    throw new Error(); }
+
   ngOnInit(): void {
-    
+
   }
 
 }

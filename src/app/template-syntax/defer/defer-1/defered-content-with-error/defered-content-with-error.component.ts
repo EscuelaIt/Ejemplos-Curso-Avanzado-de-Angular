@@ -13,10 +13,14 @@ import { HttpClient } from '@angular/common/http';
   `,
   styles: ``
 })
-export class DeferedContentWithErrorComponent {
+export class DeferedContentWithErrorComponent implements OnInit {
   private httpClient = inject(HttpClient);
 
   constructor() {
-    
+    throw new Error('Method not implemented.');
+  }
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 }
