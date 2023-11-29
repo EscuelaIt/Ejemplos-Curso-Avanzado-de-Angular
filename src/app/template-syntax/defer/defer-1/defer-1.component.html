@@ -8,6 +8,17 @@
     </pre>
   </div>
   <div class="margin-b-10">
+    <h2>Disparadores que podemos usar en el bloque defer</h2>
+    <ul>
+      <li>on idle</li>
+      <li>on viewport</li>
+      <li>on interaction (eventos: click, keydown)</li>
+      <li>on hover (eventos: mouseenter, focusin)</li>
+      <li>on inmediate</li>
+      <li>on timer</li>
+    </ul>
+  </div>
+  <div class="margin-b-10">
     <h2>Ejemplo 1 - Carga defecto</h2>
     <p>
       El contenido cargado perezosamente se mostrará en el
@@ -158,6 +169,25 @@
     </div>
   </div>
 </div>
+
+<div class="margin-b-10">
+  <div class="margin-b-10">
+    <h2>Ejemplo 7 - On inmediate</h2>
+    <p></p>
+  </div>
+  <div>
+    <div>Contenido con trigger inmediate</div>
+    <div class="bg-color-green min-h-2em">
+      @defer (on immediate) {
+        <img style="width: 200px; height: 200px;" src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2016/07/pokemon-go_0.jpg?tf=1200x"/>
+      } @placeholder () {
+        <p>Marcador mostrado hasta que no se permita mostrar el contenido</p>
+      }
+    </div>
+  </div>
+</div>
+
+
 <div class="margin-b-10 margin-t-10">
   <mat-divider></mat-divider>
 </div>
