@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeferedContent1Component } from './defered-content-1/defered-content-1.component';
-import { DeferedContentWithErrorComponent } from './defered-content-with-error/defered-content-with-error.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDividerModule } from '@angular/material/divider';
 
