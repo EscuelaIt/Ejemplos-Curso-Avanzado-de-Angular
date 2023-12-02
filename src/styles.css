@@ -88,3 +88,15 @@ pre.example-code {
 code.example-code {
     font-family: 'Courier New', Courier, monospace;
 }
+
+.hidden {
+  display: none;
+}
+
+.with-half {
+  width: 50%;
+}
+
+.position-lef {
+  float: left;
+}
