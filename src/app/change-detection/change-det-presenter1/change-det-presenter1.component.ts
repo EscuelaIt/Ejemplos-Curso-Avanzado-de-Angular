@@ -40,6 +40,7 @@ export class ChangeDetPresenter1Component implements OnChanges, OnInit {
   ngOnInit(): void {
     this.reactiveValue$.pipe(tap(value => console.log(`This is the new value: ${value}`))).subscribe();
 
+    // Esta linea provoca un evento 
     this.myObserv$.pipe(delay(5000), tap(v => console.log(v))).subscribe();
   }
 
@@ -47,7 +48,6 @@ export class ChangeDetPresenter1Component implements OnChanges, OnInit {
     if (!changes['profile'].firstChange) {
       this.hidden = false;
     }
-    console.log(changes)
   }
 
   private async getData(): Promise<any> {

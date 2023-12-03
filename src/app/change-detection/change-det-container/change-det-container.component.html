@@ -7,7 +7,11 @@
 <app-change-det-presenter1 [profile]="profile" [name]="name" [reactiveValue$]="reactiveValue$"/>
 <app-change-det-presenter2/>
 
+<button (click)="addNewPerson()">Add new Person</button>
+<button (click)="launchIntervalIntoZone()">launchIntervalIntoZone</button>
+<button (click)="launchIntervalOutsideZone()">launchIntervalOutsideZone</button>
+
 <div>
-  <div class="with-half position-lef"><app-change-det-presenter3/></div>
-  <div class="with-half position-lef"><app-change-det-presenter3/></div>
+  <div class="with-half position-lef"><app-change-det-presenter3 [listOfPersons]="personList"/></div>
+  <div class="with-half position-lef"><app-change-det-presenter3 [listOfPersons]="personList"/></div>
 </div>

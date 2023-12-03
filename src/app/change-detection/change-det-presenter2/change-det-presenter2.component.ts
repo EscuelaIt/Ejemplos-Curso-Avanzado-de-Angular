@@ -6,9 +6,12 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
+  <div class="bg-color-green">
     <p>
-      change-det-presenter2 works!
+      Contenido del componente
+      ChangeDetPresenter2
     </p>
+  </div>
   `,
   styles: ``
 })

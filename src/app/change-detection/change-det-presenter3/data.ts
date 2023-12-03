@@ -1,6 +1,52 @@
 import { Person } from "./Person";
 
-export const persons: Person[] = [
+export const PERSONS: Person[] = [
+  {
+    name: 'John Smith',
+    daysWorked: 10,
+  },
+  {
+    name: 'Maria Garcia',
+    daysWorked: 10,
+  },
+  {
+    name: 'David Johnson',
+    daysWorked: 10,
+  },
+  {
+    name: 'Sarah Brown',
+    daysWorked: 10,
+  },
+  {
+    name: 'Chen Wei',
+    daysWorked: 10,
+  }
+];
+
+export const PERSONS2: Person[] = [
+  {
+    name: 'John Smith',
+    daysWorked: 35,
+  },
+  {
+    name: 'Maria Garcia',
+    daysWorked: 35,
+  },
+  {
+    name: 'David Johnson',
+    daysWorked: 35,
+  },
+  {
+    name: 'Sarah Brown',
+    daysWorked: 35,
+  },
+  {
+    name: 'Chen Wei',
+    daysWorked: 35,
+  }
+];
+
+export const PERSONS3: Person[] = [
   {
     name: 'John Smith',
     daysWorked: 4237,
