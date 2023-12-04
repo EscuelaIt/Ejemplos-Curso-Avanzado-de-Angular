@@ -11,7 +11,12 @@
 <button (click)="launchIntervalIntoZone()">launchIntervalIntoZone</button>
 <button (click)="launchIntervalOutsideZone()">launchIntervalOutsideZone</button>
 <div>
-  <div class="position-lef"><app-change-det-presenter3 [listOfPersons]="personList"/></div>
-  <div class="position-lef border-left-black"><app-change-det-presenter3 [listOfPersons]="personList"/></div>
-  <div class="position-lef border-left-black"><app-change-det-presenter4 [listOfPersons]="personList2"/></div>
+  <div class="margin-b-10 margin-t-50">
+    <label>Buscar persona</label>
+    <input placeholder="indique el nombre" [(ngModel)]="filterPersonName" type="text">
+  </div>
+  <app-change-det-search-input (add)="addFilterPersonNameValueEvent($event)"/>
+  <div class="position-lef"><app-change-det-presenter3 [listOfPersons]="personList2" [filter]="getFilterPersonNameWithGoodPerformance()"/></div>
+  <div class="position-lef border-left-black"><app-change-det-presenter3 [listOfPersons]="personList" [filter]="getFilterPersonNameWithGoodPerformance()"/></div>
+  <div class="position-lef border-left-black"><app-change-det-presenter4 [listOfPersons]="personData$"/></div>
 </div>

@@ -1,31 +1,37 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChangeDetPresenter1Component } from '../change-det-presenter1/change-det-presenter1.component';
 import { ChangeDetPresenter2Component } from '../change-det-presenter2/change-det-presenter2.component';
 import { Profile } from '../Profile';
-import { BehaviorSubject, Subject, of } from 'rxjs';
+import { BehaviorSubject, Subject, map, of } from 'rxjs';
 import { ChangeDetPresenter3Component } from '../change-det-presenter3/change-det-presenter3.component';
 import { PERSONS, PERSONS2 } from '../data';
 import { Person } from '../Person';
 import { ChangeDetPresenter4Component } from '../change-det-presenter4/change-det-presenter4.component';
+import { FormsModule } from '@angular/forms';
+import { ChangeDetSearchInputComponent } from '../change-det-search-input/change-det-search-input.component';
 
 @Component({
   selector: 'app-change-det-container',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     ChangeDetPresenter1Component,
     ChangeDetPresenter2Component,
     ChangeDetPresenter3Component,
     ChangeDetPresenter4Component,
+    ChangeDetSearchInputComponent,
   ],
   templateUrl: './change-det-container.component.html',
   styles: ``,
 })
-export class ChangeDetContainerComponent {
+export class ChangeDetContainerComponent implements OnInit {
 
   name = 'A Name';
-  private reactiveValueSubject$ = new BehaviorSubject<string>('Default reactive value');
+  private reactiveValueSubject$ = new BehaviorSubject<string>(
+    'Default reactive value'
+  );
   public reactiveValue$ = this.reactiveValueSubject$.asObservable();
 
   personList: Person[] = PERSONS;
@@ -35,9 +41,46 @@ export class ChangeDetContainerComponent {
     name: 'Alberto',
     phone: 232323,
   };
+  filterPersonName = '';
+  filterPersonNameOptimized = '';
 
-  constructor(private zone: NgZone) {
+  private filterPersonNameOptimizedV2BehSub = new BehaviorSubject('');
+  filterPersonNameOptimizedV2$ = this.filterPersonNameOptimizedV2BehSub.asObservable();
 
+  private personDataSub = new BehaviorSubject<Person[]>(this.personList2);
+  personData$ = this.personDataSub.asObservable();
+
+  constructor(private zone: NgZone) {}
+
+  ngOnInit() {
+    this.filterPersonNameOptimizedV2$.pipe(
+      map(value => value.toLowerCase().trimEnd().trimStart())
+    ).subscribe(filterValue => {
+      if (filterValue !== '') {
+        const dataValues = this.personList2.filter(dataValue => (dataValue.name).toLowerCase().includes(filterValue));
+        this.personDataSub.next(dataValues);
+      } else this.personDataSub.next(this.personList2);
+    })
+  }
+
+  addFilterPersonNameValueEvent(value: string): void {
+    if (value) {
+      this.filterPersonNameOptimizedV2BehSub.next(value);
+    } else this.filterPersonNameOptimizedV2BehSub.next('');
+  }
+
+  getFilterPersonNameWithGoodPerformance() {
+    return this.filterPersonNameOptimized.trimStart().trimEnd();
+  }
+
+  getPersonListOptimized(): Person[] {
+    if (this.getFilterPersonNameWithGoodPerformance() !== '') {
+      return this.personList2.filter(person => (person.name).toLowerCase().includes(this.getFilterPersonNameWithGoodPerformance().toLowerCase()))
+    } else return this.personList2;
+  }
+
+  getFilterPersonNameWithBadPerformance() {
+    return this.filterPersonName.trimStart().trimEnd();
   }
 
   addNewPerson() {
@@ -83,5 +126,4 @@ export class ChangeDetContainerComponent {
       this.setIntervalsEachFiveSeconds();
     });
   }
-
 }
