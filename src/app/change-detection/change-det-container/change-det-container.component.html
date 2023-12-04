@@ -1,11 +1,13 @@
 <h1>
   Change Detection Container Component!
 </h1>
-<button (click)="changeProfileValue()">Change Value in list</button>
-<button (click)="changeProfileValueOtherOption()">Change Value in list</button>
+<button (click)="changeNamePresenter1Value()">cambiar valor de la propiedad name</button>
+<button (click)="changeProfileValue()">cambiar valor del perfil misma referencia</button>
+<button (click)="changeProfileValueOtherOption()">cambiar valor del perfil otra referencia</button>
 <button (click)="changeReactiveValue()">Change Reactive Value</button>
 <app-change-det-presenter1 [profile]="profile" [name]="name" [reactiveValue$]="reactiveValue$"/>
-<app-change-det-presenter2/>
+<app-change-det-presenter2 [propiedadEntrada]="name" (valorSalida)="emitirValorSalidaPresenter2($event)"/>
+
 
 <button (click)="addNewPerson()">Add new Person</button>
 <button (click)="launchIntervalIntoZone()">launchIntervalIntoZone</button>
@@ -16,7 +18,10 @@
     <input placeholder="indique el nombre" [(ngModel)]="filterPersonName" type="text">
   </div>
   <app-change-det-search-input (add)="addFilterPersonNameValueEvent($event)"/>
-  <div class="position-lef"><app-change-det-presenter3 [listOfPersons]="personList2" [filter]="getFilterPersonNameWithGoodPerformance()"/></div>
-  <div class="position-lef border-left-black"><app-change-det-presenter3 [listOfPersons]="personList" [filter]="getFilterPersonNameWithGoodPerformance()"/></div>
-  <div class="position-lef border-left-black"><app-change-det-presenter4 [listOfPersons]="personData$"/></div>
+  <div class="width-100 ">
+    <div class="position-lef"><app-change-det-presenter3 [listOfPersons]="personList2" [filter]="getFilterPersonNameWithGoodPerformance()"/></div>
+    <div class="position-lef border-left-black"><app-change-det-presenter3 [listOfPersons]="personList2" [filter]="getFilterPersonNameWithGoodPerformance()"/></div>
+    <div class="position-lef border-left-black"><app-change-det-presenter4 [listOfPersons]="personData$"/></div>
+  </div>
 </div>
+

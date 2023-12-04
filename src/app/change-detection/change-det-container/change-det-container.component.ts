@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgZone, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChangeDetPresenter1Component } from '../change-det-presenter1/change-det-presenter1.component';
 import { ChangeDetPresenter2Component } from '../change-det-presenter2/change-det-presenter2.component';
@@ -10,6 +10,7 @@ import { Person } from '../Person';
 import { ChangeDetPresenter4Component } from '../change-det-presenter4/change-det-presenter4.component';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetSearchInputComponent } from '../change-det-search-input/change-det-search-input.component';
+import { ExampleSignalComponent } from '../example-signal/example-signal.component';
 
 @Component({
   selector: 'app-change-det-container',
@@ -22,13 +23,23 @@ import { ChangeDetSearchInputComponent } from '../change-det-search-input/change
     ChangeDetPresenter3Component,
     ChangeDetPresenter4Component,
     ChangeDetSearchInputComponent,
+    ExampleSignalComponent
   ],
   templateUrl: './change-det-container.component.html',
   styles: ``,
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ChangeDetContainerComponent implements OnInit {
-
+  
   name = 'A Name';
+  nameComponente2 = 'Componente 2';
+
+  profile: Profile = {
+    name: 'Alberto',
+    phone: 232323,
+  };
+
+
   private reactiveValueSubject$ = new BehaviorSubject<string>(
     'Default reactive value'
   );
@@ -37,10 +48,7 @@ export class ChangeDetContainerComponent implements OnInit {
   personList: Person[] = PERSONS;
   personList2: Person[] = PERSONS2;
 
-  profile: Profile = {
-    name: 'Alberto',
-    phone: 232323,
-  };
+  
   filterPersonName = '';
   filterPersonNameOptimized = '';
 
@@ -63,7 +71,15 @@ export class ChangeDetContainerComponent implements OnInit {
     })
   }
 
+  emitirValorSalidaPresenter2(value: string) {
+    this.profile.name = value;
+  }
+
   addFilterPersonNameValueEvent(value: string): void {
+    // For normal data
+    // this.filterPersonNameOptimized = value;
+
+    // For observable data
     if (value) {
       this.filterPersonNameOptimizedV2BehSub.next(value);
     } else this.filterPersonNameOptimizedV2BehSub.next('');
@@ -84,7 +100,7 @@ export class ChangeDetContainerComponent implements OnInit {
   }
 
   addNewPerson() {
-    this.personList.push({
+    this.personList2.push({
       name: 'Alberto',
       daysWorked: 20,
     });
@@ -107,6 +123,10 @@ export class ChangeDetContainerComponent implements OnInit {
   changeProfileValue() {
     this.profile.name = 'EEEE';
     this.profile.phone = 232;
+  }
+
+  changeNamePresenter1Value() {
+    this.name = 'B Name'
   }
 
   changeReactiveValue() {

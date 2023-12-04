@@ -16,6 +16,7 @@ import { RepeatersStructControlComponent } from './template-syntax/block-control
 import { SwitchStructControlComponent } from './template-syntax/block-controls/switch-struct-control/switch-struct-control.component';
 import { Defer1Component } from './template-syntax/defer/defer-1/defer-1.component';
 import { ChangeDetContainerComponent } from './change-detection/change-det-container/change-det-container.component';
+import { ExampleSignalComponent } from './change-detection/example-signal/example-signal.component';
 
 export const routes: Routes = [
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
@@ -34,5 +35,6 @@ export const routes: Routes = [
   { path: 'switch-block-control', component: SwitchStructControlComponent },
   { path: 'defer-1', component: Defer1Component },
   { path: 'change-detection', component: ChangeDetContainerComponent },
+  { path: 'signal', component: ExampleSignalComponent },
   { path: '', component: InicioComponent },
 ];

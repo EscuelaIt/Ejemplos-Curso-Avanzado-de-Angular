@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
       <input placeholder="indique el nombre" [(ngModel)]="filterPersonName" (keydown)="handleKey($event)" type="text">
     </div>
   `,
-  styles: ``
+  styles: ``,
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ChangeDetSearchInputComponent {
 

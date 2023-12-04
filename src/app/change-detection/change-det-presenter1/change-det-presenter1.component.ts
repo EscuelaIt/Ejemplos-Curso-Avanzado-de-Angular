@@ -31,7 +31,7 @@ import { Observable, delay, from, of, tap } from 'rxjs';
           Si pasamos por encima se provoca un onMouseOverEvent dentro d ela zona de deteccion de cambios
         </p>
       </div>
-
+ 
       <div id="saveMouseArea"
         style="width: 20em;  background-color: crimson;"
       >
@@ -47,13 +47,15 @@ import { Observable, delay, from, of, tap } from 'rxjs';
         </em>
       </div>
 
-      <em>Objeto profile {{ profile | json }}</em>
-      <p>name is: {{ name }}</p>
-      <p>
-        <span [class.hidden]="hidden"
-          >Me han notificado cambios desde el onChange</span
-        >
-      </p>
+      <div>
+        <em>Objeto profile 1 {{ profile | json }}</em>
+        <p>name is: {{ name }}</p>
+        <p>
+          <span [class.hidden]="hidden"
+            >Me han notificado cambios desde el onChange</span
+          >
+        </p>
+      </div> 
     </div>
   `,
   styles: ``,
@@ -68,7 +70,7 @@ export class ChangeDetPresenter1Component implements OnChanges, OnInit, AfterVie
 
   private mouseoverListener!: () => void;
 
-  constructor(private zone: NgZone, private elRef: ElementRef) {}
+  constructor(private elRef: ElementRef, private zone: NgZone) {}
   
   ngAfterViewInit(): void {
     const mouseArea = this.elRef.nativeElement.querySelector('#saveMouseArea');
@@ -104,9 +106,11 @@ export class ChangeDetPresenter1Component implements OnChanges, OnInit, AfterVie
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!changes['profile'].firstChange) {
-      this.hidden = false;
-    }
+    console.log(changes);
+    
+    // if (!changes['profile'].firstChange) {
+    //   this.hidden = false;
+    // }
   }
 
   private async getData(): Promise<any> {
