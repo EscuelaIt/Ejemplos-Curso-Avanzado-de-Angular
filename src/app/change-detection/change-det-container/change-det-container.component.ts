@@ -7,6 +7,7 @@ import { BehaviorSubject, Subject, of } from 'rxjs';
 import { ChangeDetPresenter3Component } from '../change-det-presenter3/change-det-presenter3.component';
 import { PERSONS, PERSONS2 } from '../data';
 import { Person } from '../Person';
+import { ChangeDetPresenter4Component } from '../change-det-presenter4/change-det-presenter4.component';
 
 @Component({
   selector: 'app-change-det-container',
@@ -16,6 +17,7 @@ import { Person } from '../Person';
     ChangeDetPresenter1Component,
     ChangeDetPresenter2Component,
     ChangeDetPresenter3Component,
+    ChangeDetPresenter4Component,
   ],
   templateUrl: './change-det-container.component.html',
   styles: ``,
@@ -26,7 +28,7 @@ export class ChangeDetContainerComponent {
   private reactiveValueSubject$ = new BehaviorSubject<string>('Default reactive value');
   public reactiveValue$ = this.reactiveValueSubject$.asObservable();
 
-  personList: Person[] = PERSONS2;
+  personList: Person[] = PERSONS;
 
   profile: Profile = {
     name: 'Alberto',

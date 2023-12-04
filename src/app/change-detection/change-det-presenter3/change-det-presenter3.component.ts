@@ -1,13 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Person } from '../Person';
-import { fibonacciPoorPerformance } from '../change-det-presenter3/fibonacci';
+import { fibonacciPoorPerformance } from '../fibonacci';
 
 @Component({
   selector: 'app-change-det-presenter3',
   standalone: true,
   imports: [CommonModule],
   template: `
+    <h2>Lista de personas 1</h2>
     @defer () {
       <ul>
         @for (person of listOfPersons; track person.name) {
