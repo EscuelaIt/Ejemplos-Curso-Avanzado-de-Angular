@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetPresenter1Component } from '../change-det-presenter1/change-det-presenter1.component';
 import { ChangeDetPresenter2Component } from '../change-det-presenter2/change-det-presenter2.component';
 import { Profile } from '../Profile';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, of } from 'rxjs';
 import { ChangeDetPresenter3Component } from '../change-det-presenter3/change-det-presenter3.component';
-import { PERSONS, PERSONS2 } from '../change-det-presenter3/data';
-import { Person } from '../change-det-presenter3/Person';
+import { PERSONS, PERSONS2 } from '../data';
+import { Person } from '../Person';
 
 @Component({
   selector: 'app-change-det-container',
@@ -21,9 +21,11 @@ import { Person } from '../change-det-presenter3/Person';
   styles: ``,
 })
 export class ChangeDetContainerComponent {
-  
+
   name = 'A Name';
-  reactiveValue$ = new BehaviorSubject<string>('Default reactive value');
+  private reactiveValueSubject$ = new BehaviorSubject<string>('Default reactive value');
+  public reactiveValue$ = this.reactiveValueSubject$.asObservable();
+
   personList: Person[] = PERSONS2;
 
   profile: Profile = {
@@ -31,7 +33,9 @@ export class ChangeDetContainerComponent {
     phone: 232323,
   };
 
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone) {
+
+  }
 
   addNewPerson() {
     this.personList.push({
@@ -60,7 +64,7 @@ export class ChangeDetContainerComponent {
   }
 
   changeReactiveValue() {
-    this.reactiveValue$.next('Other reactive name');
+    this.reactiveValueSubject$.next('Other reactive name');
   }
 
   changeProfileValueOtherOption() {
@@ -76,5 +80,5 @@ export class ChangeDetContainerComponent {
       this.setIntervalsEachFiveSeconds();
     });
   }
-  
+
 }
