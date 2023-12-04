@@ -73,6 +73,18 @@ mat-form-field {
   background-color: rgb(167, 253, 210);
 }
 
+.bg-color-orange {
+  background-color: rgb(255, 153, 0);
+}
+
+.bg-color-blue {
+  background-color: rgb(0, 136, 255)
+}
+
+.bg-color-yellow {
+  background-color: rgb(243, 243, 151)
+}
+
 .min-h-2em {
   min-height: 2em;
 }
@@ -99,4 +111,11 @@ code.example-code {
 
 .position-lef {
   float: left;
+}
+
+.border-w-1em {
+  border-width: 0.1em;
+}
+.border-left-black {
+  border-left: 0.1em solid black;
 }

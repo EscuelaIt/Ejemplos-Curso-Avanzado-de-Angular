@@ -6,15 +6,10 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-  <div class="bg-color-green">
-    <p>
-      Contenido del componente
-      ChangeDetPresenter2
-    </p>
-  </div>
+    <div class="bg-color-orange">
+      <h1>Componente ChangeDetPresenter2</h1>
+    </div>
   `,
-  styles: ``
+  styles: ``,
 })
-export class ChangeDetPresenter2Component {
-
-}
+export class ChangeDetPresenter2Component {}

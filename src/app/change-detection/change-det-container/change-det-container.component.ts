@@ -29,6 +29,7 @@ export class ChangeDetContainerComponent {
   public reactiveValue$ = this.reactiveValueSubject$.asObservable();
 
   personList: Person[] = PERSONS;
+  personList2: Person[] = PERSONS2;
 
   profile: Profile = {
     name: 'Alberto',

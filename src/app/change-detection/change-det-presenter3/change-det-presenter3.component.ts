@@ -8,6 +8,7 @@ import { fibonacciPoorPerformance } from '../fibonacci';
   standalone: true,
   imports: [CommonModule],
   template: `
+  <div class="bg-color-blue">
     <h2>Lista de personas 1</h2>
     @defer () {
       <ul>
@@ -18,6 +19,7 @@ import { fibonacciPoorPerformance } from '../fibonacci';
     } @placeholder() {
       <p>Cargando datos..</p>
     }
+  </div>
 
   `,
   styles: ``,
