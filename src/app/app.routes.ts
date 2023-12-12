@@ -18,6 +18,7 @@ import { Defer1Component } from './template-syntax/defer/defer-1/defer-1.compone
 import { ChangeDetContainerComponent } from './change-detection/change-det-container/change-det-container.component';
 import { ExampleSignalComponent } from './change-detection/example-signal/example-signal.component';
 import { RoutingExampleContainerComponent } from './routing/routing-example-container/routing-example-container.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 export const routes: Routes = [
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
@@ -38,5 +39,8 @@ export const routes: Routes = [
   { path: 'change-detection', component: ChangeDetContainerComponent },
   { path: 'signal', component: ExampleSignalComponent },
   { path: 'routing', component: RoutingExampleContainerComponent },
-  { path: '', component: InicioComponent },
+  { path: 'routing/:id', component: RoutingExampleContainerComponent },
+  { path: 'main', component: InicioComponent },
+  { path: '', redirectTo: '/main', pathMatch: 'full'},
+  { path: '**', component: NotFoundPageComponent },
 ];
