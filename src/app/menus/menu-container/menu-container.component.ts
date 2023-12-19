@@ -29,7 +29,9 @@ import { MenuBlockControlComponent } from '../menu-block-control/menu-block-cont
     MenuBlockControlComponent
   ],
   templateUrl: './menu-container.component.html',
-  styles: ``
+  styles: `.route-actived {
+    color: red;
+  }`
 })
 export class MenuContainerComponent {
 

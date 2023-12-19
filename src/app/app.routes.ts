@@ -17,7 +17,6 @@ import { SwitchStructControlComponent } from './template-syntax/block-controls/s
 import { Defer1Component } from './template-syntax/defer/defer-1/defer-1.component';
 import { ChangeDetContainerComponent } from './change-detection/change-det-container/change-det-container.component';
 import { ExampleSignalComponent } from './change-detection/example-signal/example-signal.component';
-import { RoutingExampleContainerComponent } from './routing/routing-example-container/routing-example-container.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 export const routes: Routes = [
@@ -38,9 +37,19 @@ export const routes: Routes = [
   { path: 'defer-1', component: Defer1Component },
   { path: 'change-detection', component: ChangeDetContainerComponent },
   { path: 'signal', component: ExampleSignalComponent },
-  { path: 'routing', component: RoutingExampleContainerComponent },
-  { path: 'routing/:id', component: RoutingExampleContainerComponent },
-  { path: 'main', component: InicioComponent },
+  { path: 'routing', loadComponent: ()=>import('./routing/routing-example-container/routing-example-container.component').then(x => x.RoutingExampleContainerComponent), title: 'Angular Routing',
+    loadChildren: ()=>import('./routing/routing-example-container/routing-example-container.routes').then(x => x.routesChildExampleContainer)
+  },
+  { path: 'routing/:id', loadComponent: ()=>import('./routing/routing-example-container/routing-example-container.component').then(x => x.RoutingExampleContainerComponent) },
+  { path: 'main', component: InicioComponent, title: 'Main' },
   { path: '', redirectTo: '/main', pathMatch: 'full'},
   { path: '**', component: NotFoundPageComponent },
 ];
+
+/**
+ * CanActivate
+ * CanActivateChild
+ * CanDeactivate
+ * CanMatch
+ * 
+ */

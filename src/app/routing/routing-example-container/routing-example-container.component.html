@@ -1,1 +1,11 @@
-<p>routing-example-container works!</p>
+<ul>
+  <li><a routerLink="child1" routerLinkActive="actived-route" ariaCurrentWhenActive="page">Ruta 1</a></li>
+  <li><a routerLink="child2" routerLinkActive="actived-route" ariaCurrentWhenActive="page">Ruta 2</a></li>
+  <li><a routerLink="child3" routerLinkActive="actived-route" ariaCurrentWhenActive="page">Ruta 3</a></li>
+  <li><a routerLink="protected" routerLinkActive="actived-route" ariaCurrentWhenActive="page">Protected</a></li>
+  <li><a [routerLink]="['/routing', 2]" routerLinkActive="actived-route" ariaCurrentWhenActive="page">Con enlace de parametro</a></li>
+  <li><a [routerLink]="['/routing', { foo: 'foo' }]" routerLinkActive="actived-route" ariaCurrentWhenActive="page">Con enlace de parametro notacion matrix</a></li>
+</ul>
+<div>
+  <router-outlet></router-outlet>
+</div>

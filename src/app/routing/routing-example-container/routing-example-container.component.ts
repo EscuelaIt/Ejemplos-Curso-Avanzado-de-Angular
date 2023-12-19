@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-routing-example-container',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './routing-example-container.component.html',
   styleUrl: './routing-example-container.component.css'
 })
