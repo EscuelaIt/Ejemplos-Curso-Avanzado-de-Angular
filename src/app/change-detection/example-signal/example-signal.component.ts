@@ -2,6 +2,7 @@ import { Component, Signal, WritableSignal, computed, signal } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { PERSONS, PERSONS2 } from '../data';
 import { fibonacciPoorPerformance } from '../fibonacci';
+import { Person } from '../Person';
 
 @Component({
   selector: 'app-example-signal',
@@ -10,13 +11,15 @@ import { fibonacciPoorPerformance } from '../fibonacci';
   template: `<div>
     <div>
       <button (click)="changeSignalValueDirectly()">Establecer valor a 40</button>
-      <button (click)="changeSignalValue()">Incrementar valor sumando 5</button>
-      <button (click)="cambiarCalulo()">Cambiar calculo</button>
-      <p>Values of writable signal {{ mutableNumberValue() }}</p>
+      <button (click)="incrementSignalValueBy(5)">Incrementar valor sumando 5</button>
+      <button (click)="incrementSignalValueBy(10)">Incrementar valor sumando 10</button>
+      <p>Count value is {{ mutableCounterValue() }}</p>
     </div>
     <div>
-      <button (click)="changeSignalVisibility()">Change visibility</button>
-      <button (click)="changeSignalValue()">Change value</button>
+      <button (click)="changeVisibility()">{{ buttonTitleVisibility() }}</button>  
+      <button (click)="recalculateWithCheapData()">Recalcular con datos poco costosos</button>
+      <button (click)="recalculateWithExpensiveData()">Recalcular con datos muy costosos</button>
+      
       <p>Value is {{ conditionalCount() }}</p>
     </div>
   </div>`,
@@ -24,47 +27,52 @@ import { fibonacciPoorPerformance } from '../fibonacci';
 })
 export class ExampleSignalComponent {
 
-  private data = PERSONS2;
-  private data2 = PERSONS;
+  private personsWithCheapValues = PERSONS;
+  private personsWithExpensiveValues = PERSONS2;
 
-  mutableNumberValue: WritableSignal<number> = signal(0);
-  mutableConditionValue: WritableSignal<boolean> = signal(false);
-  otherSignal: Signal<number> = this.mutableNumberValue.asReadonly();
+  mutableCounterValue: WritableSignal<number> = signal(0);
+  mutableVisibilityValue: WritableSignal<boolean> = signal(false);
+  readOnlyNumberValue: Signal<number> = this.mutableCounterValue.asReadonly();
+  expensiveDataCalculated: WritableSignal<number[]> = signal(this.loadCalculatedPersonData(this.personsWithExpensiveValues))
 
-  ejemploDatosComplejos = signal(this.calculo())
-
-
-  calculo(){
-    console.log('calculando');
-    return this.data.map(value => fibonacciPoorPerformance(value.daysWorked));
-  }
-
-  calculo2(){
-    console.log('calculando');
-    return this.data2.map(value => fibonacciPoorPerformance(value.daysWorked));
+  loadCalculatedPersonData(persons: Person[]): number[]{
+    console.log('running loadCalculatedPersonData');
+    return persons.map(value => fibonacciPoorPerformance(value.daysWorked));
   }
 
   conditionalCount = computed(() => {
-    if (this.mutableConditionValue()) {
-      return this.ejemploDatosComplejos()
+    if (this.mutableVisibilityValue()) {
+      return this.expensiveDataCalculated()
     } else {
       return 'Nothing to see here!';
     }
   });
 
+  buttonTitleVisibility = computed(() => {
+    if (this.mutableVisibilityValue()) {
+      return 'Ocultar valores'
+    } else {
+      return 'Mostrar valores';
+    }
+  });
+
   changeSignalValueDirectly() {
-    this.mutableNumberValue.set(40);
+    this.mutableCounterValue.set(40);
   }
 
-  changeSignalValue() {
-    this.mutableNumberValue.update((value) => value + 5);
+  incrementSignalValueBy(valueToIncrement: number) {
+    this.mutableCounterValue.update((value) => value + valueToIncrement);
   }
 
-  changeSignalVisibility() {
-    this.mutableConditionValue.update((value) => !value);
+  changeVisibility() {
+    this.mutableVisibilityValue.update((value) => !value);
   }
 
-  cambiarCalulo() {
-    this.ejemploDatosComplejos.set(this.calculo2())
+  recalculateWithCheapData() {
+    this.expensiveDataCalculated.set(this.loadCalculatedPersonData(this.personsWithCheapValues))
+  }
+
+  recalculateWithExpensiveData() {
+    this.expensiveDataCalculated.set(this.loadCalculatedPersonData(this.personsWithExpensiveValues))
   }
 }
