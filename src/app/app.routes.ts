@@ -18,8 +18,10 @@ import { Defer1Component } from './template-syntax/defer/defer-1/defer-1.compone
 import { ChangeDetContainerComponent } from './change-detection/change-det-container/change-det-container.component';
 import { ExampleSignalComponent } from './change-detection/example-signal/example-signal.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { HttpClientExampleComponent } from './http-client-example/http-client-example.component';
 
 export const routes: Routes = [
+  { path: 'http-client-example', component: HttpClientExampleComponent },
   { path: 'temp-form-1', component: SimpleTemplateForm1Component },
   { path: 'temp-form-2', component: SimpleTemplateForm2Component },
   { path: 'temp-form-3', component: SimpleTemplateForm3Component },

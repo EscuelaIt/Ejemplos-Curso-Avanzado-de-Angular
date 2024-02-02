@@ -1,0 +1,24 @@
+{
+  "libros": [
+    {"id": 1, "title": "El señor de los anillos", "author": "J.R.R. Tolkien", "price": 25.99},
+    {"id": 2, "title": "Cien años de soledad", "author": "Gabriel García Márquez", "price": 20.50},
+    {"id": 3, "title": "1984", "author": "George Orwell", "price": 15.75},
+    {"id": 4, "title": "Harry Potter y la piedra filosofal", "author": "J.K. Rowling", "price": 18.99},
+    {"id": 5, "title": "Don Quijote de la Mancha", "author": "Miguel de Cervantes", "price": 22.00},
+    {"id": 6, "title": "Matar un ruiseñor", "author": "Harper Lee", "price": 19.50},
+    {"id": 7, "title": "Crimen y castigo", "author": "Fyodor Dostoevsky", "price": 17.25},
+    {"id": 8, "title": "Orgullo y prejuicio", "author": "Jane Austen", "price": 16.99},
+    {"id": 9, "title": "Los miserables", "author": "Victor Hugo", "price": 24.75},
+    {"id": 10, "title": "Rayuela", "author": "Julio Cortázar", "price": 21.80},
+    {"id": 11, "title": "Sapiens: De animales a dioses", "author": "Yuval Noah Harari", "price": 26.50},
+    {"id": 12, "title": "La sombra del viento", "author": "Carlos Ruiz Zafón", "price": 23.20},
+    {"id": 13, "title": "Anna Karenina", "author": "Leo Tolstoy", "price": 18.50},
+    {"id": 14, "title": "El Gran Gatsby", "author": "F. Scott Fitzgerald", "price": 20.90},
+    {"id": 15, "title": "La Odisea", "author": "Homero", "price": 15.99},
+    {"id": 16, "title": "El Hobbit", "author": "J.R.R. Tolkien", "price": 19.95},
+    {"id": 17, "title": "La Metamorfosis", "author": "Franz Kafka", "price": 14.70},
+    {"id": 18, "title": "El Principito", "author": "Antoine de Saint-Exupéry", "price": 12.50},
+    {"id": 19, "title": "El nombre de la rosa", "author": "Umberto Eco", "price": 22.99},
+    {"id": 20, "title": "El alquimista", "author": "Paulo Coelho", "price": 16.80}
+  ]
+}
