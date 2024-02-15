@@ -11,3 +11,5 @@ class Service3 {
 }
 
 const serv1 = new Service1(new Service2(new Service3))
+
+// TestBed
