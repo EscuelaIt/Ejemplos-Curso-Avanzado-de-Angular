@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ComponentTesteable3Component } from './component-testeable3.component';
 import { DebugElement } from '@angular/core';
 
-fdescribe('ComponentTesteable3Component', () => {
+describe('ComponentTesteable3Component', () => {
   let component: ComponentTesteable3Component;
   let fixture: ComponentFixture<ComponentTesteable3Component>;
   let h1: HTMLElement;
