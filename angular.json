@@ -89,7 +89,7 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "codeCoverage": true
+            "codeCoverage": false
           }
         }
       }
