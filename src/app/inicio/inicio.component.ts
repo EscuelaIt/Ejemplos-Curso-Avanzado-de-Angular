@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 export class InicioComponent {
 
   private apiUrl = environment.api;
-  private isProduction = environment.production;
+  isProduction = environment.production;
 
   constructor(){
     console.log(`Api url is ${this.apiUrl}`);
